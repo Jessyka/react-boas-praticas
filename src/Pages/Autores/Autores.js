@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import Header from '../../Components/Header/Header';
-import DataTable from '../../Components/DataTable/DataTable';
 import ApiService from '../../utils/ApiService';
 import PopUp from '../../utils/PopUp';
+import Tabela from "../../Components/Tabela/Tabela";
 
 class Autores extends Component {
 
@@ -26,13 +26,21 @@ class Autores extends Component {
                 .catch(err => PopUp.exibeMensagem('error', 'Falha na comunicação com a API ao listar os autores'));
     }
 
+    getCampos = () => {
+        return [
+            { titulo: this.state.titulo, campo: 'nome' }
+        ]
+    }
+
     render() {
         return (
             <Fragment>
                 <Header />
                 <div className='container'>
                     <h1>Página de Autores</h1>
-                    <DataTable dados={this.state.nomes} titulo={this.state.titulo} colunas={['nome']} />
+                    <Tabela
+                        campos={this.getCampos()}
+                        dados={this.state.nomes} />
                 </div>
             </Fragment>
         );

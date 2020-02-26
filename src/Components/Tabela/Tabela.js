@@ -36,9 +36,7 @@ const Tabela = props => {
         <Table>
             <TableHead>
                 <TableRow>
-                    {campos.map(campo => {
-                        return (<TableCell>{campo.titulo}</TableCell>);
-                    })}
+                    {campos.map(campo => <TableCell>{campo.titulo}</TableCell>)}
                     {getRemoveTitle(removerDados)}
                 </TableRow>
             </TableHead>
@@ -46,12 +44,9 @@ const Tabela = props => {
                 {dados.map(dado => {
                     return (
                         <TableRow>
-                            {campos.map(item => {
-                                return (<TableCell>{dado[item.campo]}</TableCell>);
-                            })}
+                            {campos.map(item => <TableCell key={`${item.id}${item[item.campo]}`}>{dado[item.campo]}</TableCell>)}
                             {getRemoveCell(removerDados, dado.id)}
                         </TableRow>
-
                     );
                 })}
             </TableBody>
