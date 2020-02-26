@@ -4,6 +4,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
 
 class Tabela extends Component {
 
@@ -29,11 +30,13 @@ class Tabela extends Component {
                             <TableCell>{autor.nome}</TableCell>
                             <TableCell>{autor.nome}</TableCell>
                             <TableCell>
-                                <button
+                                <Button
+                                    variant={"contained"}
+                                    color={"primary"}
                                     onClick={() => removeAutor(autor.id)}
-                                    className="waves-effect waves-light indigo lighten-2 btn">
+                                >
                                     Remover
-                                </button>
+                                </Button>
                             </TableCell>
                         </TableRow>
 
