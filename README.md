@@ -19,15 +19,6 @@ To run the the application, execute `npm start` and access it at
  
 To stop the application, execute `npm stop`.
  
-## Testing
- 
-### Unit Tests
- 
-To run the unit tests, execute:
- 
-```bash
-npm run test       # unit tests
-```
  
 ## Build package
  
