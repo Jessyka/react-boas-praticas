@@ -11,7 +11,6 @@ class Livros extends Component {
 
         this.state = {
             livros: [],
-            titulo: 'Livros'
         };
     }
 
@@ -29,7 +28,7 @@ class Livros extends Component {
 
     getCampos = () => {
         return [
-            { titulo: this.state.titulo, campo: 'livro' }
+            { titulo: 'Livros', campo: 'livro' }
         ]
     }
 

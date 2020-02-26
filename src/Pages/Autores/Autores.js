@@ -10,8 +10,7 @@ class Autores extends Component {
         super(props);
 
         this.state = {
-            nomes: [],
-            titulo: 'Autores'
+            nomes: []
         };
     }
 
@@ -28,7 +27,7 @@ class Autores extends Component {
 
     getCampos = () => {
         return [
-            { titulo: this.state.titulo, campo: 'nome' }
+            { titulo: 'Autores', campo: 'nome' }
         ]
     }
 
