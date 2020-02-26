@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -6,46 +6,57 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 
-class Tabela extends Component {
+const getRemoveCell = (removerDado, id) =>
+{
+    return removerDado ?
+        <TableCell>
+            <Button
+                variant={"contained"}
+                color={"primary"}
+                onClick={() => removerDado(id)}
+            >
+                Remover
+            </Button>
+        </TableCell>
+        :
+        null;
+}
 
-    render() {
+const getRemoveTitle = removerDado => {
+    return removerDado ?
+        <TableCell>Remover</TableCell>
+        :
+        null;
+}
 
-        const {autores, removeAutor} = this.props;
+const Tabela = props => {
+    const {campos, dados, removerDados} = props;
 
-        return (
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Autores</TableCell>
-                        <TableCell>Livros</TableCell>
-                        <TableCell>Preços</TableCell>
-                        <TableCell>Remover</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {autores.map(autor => {
-                    return(
-                        <TableRow key={autor.id}>
-                            <TableCell>{autor.nome}</TableCell>
-                            <TableCell>{autor.nome}</TableCell>
-                            <TableCell>{autor.nome}</TableCell>
-                            <TableCell>
-                                <Button
-                                    variant={"contained"}
-                                    color={"primary"}
-                                    onClick={() => removeAutor(autor.id)}
-                                >
-                                    Remover
-                                </Button>
-                            </TableCell>
+    return (
+        <Table>
+            <TableHead>
+                <TableRow>
+                    {campos.map(campo => {
+                        return (<TableCell>{campo.titulo}</TableCell>);
+                    })}
+                    {getRemoveTitle(removerDados)}
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {dados.map(dado => {
+                    return (
+                        <TableRow>
+                            {campos.map(item => {
+                                return (<TableCell>{dado[item.campo]}</TableCell>);
+                            })}
+                            {getRemoveCell(removerDados, dado.id)}
                         </TableRow>
 
-                    )
-                    })}
-                </TableBody>
-            </Table>
-        );
-    }
+                    );
+                })}
+            </TableBody>
+        </Table>
+    );
 }
 
 export default Tabela;

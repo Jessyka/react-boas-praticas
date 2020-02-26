@@ -61,6 +61,14 @@ class Home extends Component {
                 .catch(err => PopUp.exibeMensagem("error", "Erro na comunicação com a API ao tentar listar os autores"));
   }
 
+  getCampos = () => {
+      return [
+          { titulo: 'Autores', campo: 'nome' },
+          { titulo: 'Livros', campo: 'livro' },
+          { titulo: 'Preços', campo: 'preco' }
+      ]
+  }
+
   render() {
 
     return (
@@ -68,7 +76,10 @@ class Home extends Component {
         <Header />
         <div className="container mb-10">
         <h1>App de livros</h1>
-        <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
+        <Tabela
+            campos={this.getCampos()}
+            dados={this.state.autores}
+            removerDados={this.removeAutor} />
         <Form escutadorDeSubmit={this.escutadorDeSubmit}/>
         </div>
       </Fragment>
