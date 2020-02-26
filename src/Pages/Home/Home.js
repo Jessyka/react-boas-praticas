@@ -16,7 +16,7 @@ class Home extends Component {
       autores: [],
     };
   }
-  
+
   removeAutor = id => {
 
     const { autores } = this.state;
@@ -32,21 +32,21 @@ class Home extends Component {
                 }
               })
               .catch(err => PopUp.exibeMensagem("error", "Erro na comunicação com a API ao tentar remover o autor"));
-    
+
   }
 
   escutadorDeSubmit = autor => {
     ApiService.CriaAutor(JSON.stringify(autor))
-              .then(res =>{  
+              .then(res =>{
                 if(res.message === 'success'){
                   this.setState({ autores:[...this.state.autores, res.data] });
                   PopUp.exibeMensagem("success", "Autor adicionado com sucesso");
                 }
-                
+
               })
               .catch(err => PopUp.exibeMensagem("error", "Erro na comunicação com a API ao tentar criar o autor"));
 
-    
+
   }
 
 
@@ -56,7 +56,7 @@ class Home extends Component {
                   if(res.message === 'success'){
                     this.setState({autores : [...this.state.autores, ...res.data]})
                   }
-                  
+
                 })
                 .catch(err => PopUp.exibeMensagem("error", "Erro na comunicação com a API ao tentar listar os autores"));
   }
@@ -67,7 +67,7 @@ class Home extends Component {
       <Fragment>
         <Header />
         <div className="container mb-10">
-        <h1>Casa do Código</h1>
+        <h1>App de livros</h1>
         <Tabela autores={this.state.autores} removeAutor={this.removeAutor} />
         <Form escutadorDeSubmit={this.escutadorDeSubmit}/>
         </div>
