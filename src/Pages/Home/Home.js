@@ -76,11 +76,11 @@ class Home extends Component {
         <Header />
         <div className="container mb-10">
         <h1>App de livros</h1>
+        <Form escutadorDeSubmit={this.escutadorDeSubmit}/>
         <Tabela
             campos={this.getCampos()}
             dados={this.state.autores}
             removerDados={this.removeAutor} />
-        <Form escutadorDeSubmit={this.escutadorDeSubmit}/>
         </div>
       </Fragment>
     );

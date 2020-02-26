@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import FormValidator from '../../utils/FormValidator';
 import PopUp from '../../utils/PopUp'
+import {TextField} from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 
 class Formulario extends Component {
 
@@ -64,7 +67,7 @@ class Formulario extends Component {
                 PopUp.exibeMensagem('error', campo.mensagem);
             });
         }
-        
+
     }
 
     render() {
@@ -73,41 +76,47 @@ class Formulario extends Component {
 
         return (
             <form>
-                <div className="row">
-                    <div className="input-field col s4">
-                        <label className="input-field" htmlFor="nome">Nome</label>
-                        <input
-                            className="validate"
-                            id="nome"
-                            type="text"
-                            name="nome"
+                <Grid container spacing={2} alignItems={'center'}>
+                    <Grid item>
+                        <TextField
+                            variant={"outlined"}
+                            id={'nome'}
+                            name={'nome'}
+                            label={'Nome'}
                             value={nome}
-                            onChange={this.escutadorDeInput} />
-                    </div>
-                    <div className="input-field col s4">
-                        <label className="input-field" htmlFor="livro">Livro</label>
-                        <input
-                            className="validate"
-                            id="livro"
-                            type="text"
-                            name="livro"
+                            onChange={this.escutadorDeInput}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            variant={"outlined"}
+                            id={'livro'}
+                            name={'livro'}
+                            label={'Livro'}
                             value={livro}
-                            onChange={this.escutadorDeInput} />
-
-                    </div>
-                    <div className="input-field col s4">
-                        <label className="input-field" htmlFor="preco">Preço</label>
-                        <input
-                            className="validate"
-                            id="preco"
-                            type="text"
-                            name="preco"
+                            onChange={this.escutadorDeInput}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            variant={"outlined"}
+                            id={'preco'}
+                            name={'preco'}
+                            label={'Preço'}
                             value={preco}
-                            onChange={this.escutadorDeInput} />
-                    </div>
-                </div>
-                <button className="waves-effect waves-light indigo lighten-2 btn" onClick={this.submitFormulario} type="button">Salvar
-                </button>
+                            onChange={this.escutadorDeInput}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <Button
+                            variant={"contained"}
+                            color={"primary"}
+                            onClick={() => this.submitFormulario()}
+                        >
+                            Salvar
+                        </Button>
+                    </Grid>
+                </Grid>
             </form>
         );
     }
